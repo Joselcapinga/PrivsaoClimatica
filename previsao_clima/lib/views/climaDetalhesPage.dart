@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models/clima.dart';
 
@@ -60,6 +61,19 @@ class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
                   style: TextStyle(fontSize: 14),
                 ),
               ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+              ],
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Informe o valor do campo";
+                } else if (int.parse(value) < 0 && int.parse(value) > 24) {
+                  return "hora invalida";
+                }
+                return null;
+              },
+              onChanged: (value) {},
             ),
           ),
         ],
