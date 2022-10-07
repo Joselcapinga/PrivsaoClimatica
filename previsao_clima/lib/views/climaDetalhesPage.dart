@@ -16,6 +16,7 @@ class ClimaDetalhesPage extends StatefulWidget {
 class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
   final _form = GlobalKey<FormState>();
   final _dataClima = TextEditingController();
+  int hora = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,17 @@ class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
                       color: Colors.green),
                 )
               ],
+            ),
+          ),
+          //mostra os resultados da pesquisa
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Text(
+              '$hora ${widget.clima.descricao}',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.teal,
+              ),
             ),
           ),
           Form(

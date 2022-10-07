@@ -5,6 +5,7 @@ class Clima {
   String sensacaoClima;
   String descricao;
   String icon;
+  int hora;
 
   Clima(
       {required this.cidade,
@@ -12,5 +13,6 @@ class Clima {
       required this.temperatura,
       required this.sensacaoClima,
       required this.descricao,
-      required this.icon});
+      required this.icon,
+      required this.hora});
 }
