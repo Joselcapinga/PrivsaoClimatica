@@ -49,6 +49,15 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  bool isEmail(String em) {
+    String p =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
+    RegExp regExp = new RegExp(p);
+
+    return regExp.hasMatch(em);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Informe o email corretamente';
-                      }
+                      } else if (!isEmail(value)) return 'Email inválido';
                       return null;
                     },
                   ),
