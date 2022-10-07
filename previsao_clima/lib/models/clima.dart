@@ -7,12 +7,13 @@ class Clima {
   String icon;
   int hora;
 
-  Clima(
-      {required this.cidade,
-      required this.data,
-      required this.temperatura,
-      required this.sensacaoClima,
-      required this.descricao,
-      required this.icon,
-      required this.hora});
+  Clima({
+    required this.cidade,
+    required this.data,
+    required this.temperatura,
+    required this.sensacaoClima,
+    required this.descricao,
+    required this.icon,
+    required this.hora,
+  });
 }
