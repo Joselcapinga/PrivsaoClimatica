@@ -13,6 +13,9 @@ class ClimaDetalhesPage extends StatefulWidget {
 }
 
 class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
+  final _form = GlobalKey<FormState>();
+  final _dataClima = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,26 +25,43 @@ class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
       body: Column(
         children: [
           Padding(
-              padding: EdgeInsets.only(bottom: 24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    child: Image.asset(widget.clima.icon),
-                    width: 60,
-                  ),
-                  Container(width: 10),
-                  Text(
-                    widget.clima.descricao,
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -1,
-                        color: Colors.green),
-                  )
-                ],
-              )),
+            padding: EdgeInsets.only(bottom: 24),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  child: Image.asset(widget.clima.icon),
+                  width: 60,
+                ),
+                Container(width: 10),
+                Text(
+                  widget.clima.descricao,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -1,
+                      color: Colors.green),
+                )
+              ],
+            ),
+          ),
+          Form(
+            key: _form,
+            child: TextFormField(
+              controller: _dataClima,
+              style: TextStyle(fontSize: 22),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Informa Hora',
+                prefixIcon: Icon(Icons.timer_sharp),
+                suffix: Text(
+                  'Número inteiro',
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
