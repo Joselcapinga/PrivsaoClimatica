@@ -40,22 +40,36 @@ class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
                 Text(
                   widget.clima.descricao,
                   style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -1,
-                      color: Colors.green),
-                )
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: -1,
+                    color: Colors.green,
+                  ),
+                ),
               ],
             ),
           ),
           //mostra os resultados da pesquisa
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: Text(
-              '$hora ${widget.clima.descricao}',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.teal,
+            child: Container(
+              child: Text(
+                '$hora ' +
+                    'hr' +
+                    ' temperatura: ' +
+                    '${widget.clima.temperatura}',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.teal,
+                ),
+              ),
+              margin: EdgeInsets.only(
+                bottom: 24,
+              ),
+              padding: EdgeInsets.all(50),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.teal.withOpacity(0.05),
               ),
             ),
           ),
