@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_clima/views/climaPage.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -37,6 +38,15 @@ class _LoginPageState extends State<LoginPage> {
         toggleButton = 'voltar ao login';
       }
     });
+  }
+
+  viewPageClima() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ClimaPage(),
+      ),
+    );
   }
 
   @override
@@ -97,7 +107,8 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: EdgeInsets.all(24),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    // onPressed: () {},
+                    onPressed: () => viewPageClima(),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
