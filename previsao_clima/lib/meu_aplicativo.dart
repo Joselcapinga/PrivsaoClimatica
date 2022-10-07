@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:cripto_moeda/pages/climaPage.dart';
+import 'package:previsao_clima/views/auth/loginPage.dart';
 import 'package:previsao_clima/views/climaPage.dart';
 
 class MeuAplicativo extends StatelessWidget {
@@ -10,7 +10,8 @@ class MeuAplicativo extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: ClimaPage(),
+      // home: ClimaPage(),
+      home: LoginPage(),
     );
   }
 }

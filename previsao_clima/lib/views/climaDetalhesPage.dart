@@ -18,6 +18,20 @@ class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
   final _dataClima = TextEditingController();
   int hora = 0;
 
+  consultar() {
+    if (_form.currentState!.validate()) {
+      //salvar consulta do clima
+
+      Navigator.pop(context);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Consultar hora da previsão climatica !'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,30 +63,35 @@ class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
               ],
             ),
           ),
-          //mostra os resultados da pesquisa
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Container(
-              child: Text(
-                '$hora ' +
-                    'hr' +
-                    ' temperatura: ' +
-                    '${widget.clima.temperatura}',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.teal,
+          (hora > 0 && hora < 25)
+              ?
+              //mostra os resultados da pesquisa
+              SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Container(
+                    child: Text(
+                      '$hora ' +
+                          'hr' +
+                          ' temperatura: ' +
+                          '${widget.clima.temperatura}',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.teal,
+                      ),
+                    ),
+                    margin: EdgeInsets.only(
+                      bottom: 24,
+                    ),
+                    padding: EdgeInsets.all(50),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.teal.withOpacity(0.05),
+                    ),
+                  ),
+                )
+              : Container(
+                  margin: EdgeInsets.only(bottom: 24),
                 ),
-              ),
-              margin: EdgeInsets.only(
-                bottom: 24,
-              ),
-              padding: EdgeInsets.all(50),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.teal.withOpacity(0.05),
-              ),
-            ),
-          ),
           Form(
             key: _form,
             child: TextFormField(
@@ -93,13 +112,37 @@ class _ClimaDetalhesPage extends State<ClimaDetalhesPage> {
               ],
               validator: (value) {
                 if (value!.isEmpty) {
-                  return "Informe o valor do campo";
+                  return "Informe a data";
                 } else if (int.parse(value) < 0 && int.parse(value) > 24) {
                   return "hora invalida";
                 }
                 return null;
               },
-              onChanged: (value) {},
+              onChanged: (value) {
+                setState(() {
+                  hora = (value.isEmpty) ? -1 : widget.clima.hora;
+                });
+              },
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 24),
+            child: ElevatedButton(
+              onPressed: consultar,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.search),
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      'Consultar',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
