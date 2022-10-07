@@ -108,7 +108,11 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.all(24),
                   child: ElevatedButton(
                     // onPressed: () {},
-                    onPressed: () => viewPageClima(),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        viewPageClima();
+                      }
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
